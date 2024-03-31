@@ -34,8 +34,8 @@ def Decrypt(text, key):
     return (targetText)
 
 
-key = "ATTACKONTITANENDING"
-cr = Encrypt("UNLIMITEDBLADEWORKS", key)
+key =        "crypt"
+cr = Encrypt("quick", key)
 res = Decrypt(cr, key)
 
 print(cr)

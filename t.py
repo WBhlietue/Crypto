@@ -1,0 +1,10 @@
+# F2 x 4C x ( 2 * E7 ) x ( 3 * 8C )
+# 87 x 6E x ( 2 * 46 ) x ( 3 * A6 )
+print(bin(0x87))
+print(bin(0x6e))
+print(bin(0x2))
+print(bin(0x46))
+print(bin(0x3))
+print(bin(0xa6))
+
+print(bin(67))

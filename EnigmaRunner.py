@@ -9,7 +9,7 @@ enigma.ReadFromFile("enigma.txt")
 
 
 
-text = "unlimited blade works"
+text = "Unlimited blade works"
 text = enigma.Convert(text)
 print(text)
 enigma.ToInitRotate()

@@ -1,4 +1,4 @@
-key = input("Enter key: ")
+key = "GRAVITYFLSBCDEHKMNOPQUWXZ "
 key = key.replace(" ", "")
 key = key.upper()
 
@@ -107,7 +107,7 @@ def Decrypt(text):
 
     return (targetText)
 
-text = Encrypt("Unlimited Blade Works")
+text = Encrypt("Newspaper")
 ans = Decrypt(text)
 print(text)
 print(ans)

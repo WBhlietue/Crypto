@@ -21,6 +21,8 @@ def GetEulerTotient(n):
             num += 1
     return num
 
+print(GetEulerTotient(10))
+
 def GetEulerWithP(n):
     def GetSingle(p):
         return math.pow(p[0], p[1] - 1) * (p[0] - 1)

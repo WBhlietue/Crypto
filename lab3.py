@@ -55,28 +55,31 @@ def MillerRabin(n):
 
 
 def PrimitiveRoot(num):
-    if (num == 1):
-        return [0]
-    if (num == 2):
+    if num < 2:
+        return []
+    if num == 2:
         return [1]
+    
     eu = GetEulerTotient(num)
     root = []
     for i in range(2, num):
         if GCD(i, num) == 1:
+            is_primitive = True
             for j in range(1, eu):
-                if(i**j%num == 1 and j != eu):
+                if i ** j % num == 1:
+                    is_primitive = False
                     break
-                if(i**j%num == 1 and j == eu):
-                    root.append(i)
-                    break
+            if is_primitive:
+                root.append(i)
     return root
 
-primes = []
-for i in range(2, 100):
-    if(MillerRabin(i) == True):
-        primes.append(i)
 
-print(primes)
-print(PrimitiveRoot(27))
-print(EulerTotientPrime(7, 2))
-print(EulerTotientList(35))
+# primes = []
+# for i in range(2, 100):
+#     if(MillerRabin(i) == True):
+#         primes.append(i)
+
+# print(primes)
+# print(PrimitiveRoot(27))
+# print(EulerTotientPrime(7, 2))
+# print(EulerTotientList(35))

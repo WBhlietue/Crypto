@@ -21,7 +21,7 @@ def GetEulerTotient(n):
             num += 1
     return num
 
-print(GetEulerTotient(10))
+# print(GetEulerTotient(10))
 
 def GetEulerWithP(n):
     def GetSingle(p):

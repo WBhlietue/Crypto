@@ -68,7 +68,6 @@ def rotWord(st, n):
 
 def XOR(a, b):
     hhx = []
-    print(len(a), len(b))
     for i in range(0, len(a)):
         hx = a[i] ^ b[i]
         hhx.append(hx)
@@ -220,19 +219,6 @@ def addRoundKey(a, ww):
     return XOR(a, w1)
 
 
-def mPrint(st):
-    m = []
-
-    m.append([st[0], st[4], st[8], st[12]])
-    m.append([st[1], st[5], st[9], st[13]])
-    m.append([st[2], st[6], st[10], st[14]])
-    m.append([st[3], st[7], st[11], st[15]])
-    for i in m:
-        for j in i:
-            print(hex(j).replace('0x', '').upper(), end='\t')
-        print()
-
-
 def AES(Key, PlainText):
     PlainText = TextToHex(PlainText)
     keyList = st_2_16(Key)
@@ -245,6 +231,19 @@ def AES(Key, PlainText):
         if i != 10:
             st0 = mix_columns(st0)
         st0 = addRoundKey(st0, w[4 * i:4 * i + 4])
+    return st0
+def AES16(Key, hex):
+    keyList = st_2_16A(Key)
+    pList = st_2_16A(hex)
+    w = wlist(keyList)
+    st0 = addRoundKey(pList, w[0:4])
+    for i in range(1, 11):
+        st0 = subByte(st0, Sbox)
+        st0 = shiftRow(st0)
+        if i != 10:
+            st0 = mix_columns(st0)
+        st0 = addRoundKey(st0, w[4 * i:4 * i + 4])
+    st0= ToHex(st0)
     return st0
 
 
@@ -263,11 +262,20 @@ def AES_de(Key, PlainText):
 
 
 def st_2_16(st):
-    while(len(st) % 16 != 0):
+    while(len(st) % 32 != 0):
         st += "00"
     p = []
-    print(len(Key))
     for i in range(0, len(Key), 2):
+        
+        a = st[i:i + 2]
+        if(len(a) != 0):
+            p.append(int(st[i:i + 2], 16))
+    return p
+def st_2_16A(st):
+    while(len(st) % 32 != 0):
+        st += "00"
+    p = []
+    for i in range(0, len(st), 2):
         
         a = st[i:i + 2]
         if(len(a) != 0):
@@ -314,27 +322,47 @@ def HexToText(h):
             text += chr(int(num , 16))
     return text
 
-readFile = open("./crypto/lab9En.txt", "r")
-Key = readFile.readline()[:-1]
-# PlainText = readFile.readline()
-# readFile.close()
-# res = AES(Key, PlainText)
-# decFile = open("./crypto/lab9De.txt", "w")
-# decFile.writelines(Key + "\n")
-# decFile.writelines(ToHex(res))
-# decFile.close()
-# decFile = open("./crypto/lab9De.txt", "r")
-# Key = decFile.readline()[:-1]
-# text = decFile.readline()
-# decFile.close()
-
-# result = AES_de(Key, st_2_16(text))
-# print(HexToText(ToHex(result)))
-# resultFile = open("./crypto/lab9Res.txt", "w")
-# resultFile.writelines(HexToText(ToHex(result)))
-
-PrintKey(Key)
 
 
-# 0f1571c947d9e8590cb7add6af7f6798
-# 0123456789abcdeffedcba9876543210
+def Encrypt(key, text):
+    crypt = ""
+    for i in range(0, len(text) // 16 + 1):
+        block = text[i * 16:i * 16 + 16]
+        if(len(block) == 0):
+            break
+        result = (AES(key, block))
+        crypt+=ToHex(result)
+    return crypt
+
+
+def Decrypt(key, text):
+    t = ""
+    for i in range(0, len(text) // 32 + 1):
+        block = text[i * 32:i * 32 + 32]
+        if(len(block) == 0):
+            break
+        result = AES_de(key, st_2_16(block))
+        res = HexToText(ToHex(result))
+        t += res
+    return t
+
+if(__name__ == "__main__"):
+
+    readFile = open("./crypto/lab9En.txt", "r")
+    Key = readFile.readline()[:-1].split("=")[1]
+    PlainText = "".join(readFile.readlines())
+    readFile.close()
+
+    res = Encrypt(Key, PlainText)
+    decFile = open("./crypto/lab9De.txt", "w")
+    decFile.writelines(Key + "\n")
+    decFile.writelines((res))
+    decFile.close()
+    decFile = open("./crypto/lab9De.txt", "r")
+    Key = decFile.readline()[:-1]
+    text = decFile.readline()
+    decFile.close()
+
+    result = Decrypt(Key, text)
+    resultFile = open("./crypto/lab9Res.txt", "w")
+    resultFile.writelines(((result)))

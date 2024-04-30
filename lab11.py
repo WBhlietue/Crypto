@@ -91,3 +91,6 @@ def Decrypt(l, p, q, e):
 
 
 # print(D1(a, b, n))
+
+
+# print(RSA(P=[8], p=7, q=11, e=17, en="en"))

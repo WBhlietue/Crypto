@@ -125,8 +125,8 @@ def RandomNumberCTR():
 
 # s16 = T.st_2_16A(T.TextToHex(txt))
 # # print(s16)
-# s16 = T.st_2_16A("876e46a6f24ce78c4d904ad897ecc395")
-# mix = mix_columns(s16)
+s16 = T.st_2_16A("876e46a6f24ce78c4d904ad897ecc395")
+mix = mix_columns(s16)
 # print(mix)
 # print(mix)
 # mix = T.mix_columns(s16)

@@ -55,11 +55,15 @@ def CheckK():
 def ElgamalEncrypt(text, y, p, a):
     s = ""
     for i in text:
-        m = ord(i)
-        k = int(lab10.RandomNumberCTR(), 16) % p
+        p = 31
+        a =3
+        y = 25
+        m = 14
+        k = 7
         K = pow(y, k, p)
         c1 = pow(a, k, p)
         c2 = (m*K)%p
+        print(i, (c2))
         s += str(c1) + "," + str(c2) + ","
     return s[:-1]
 def ElgamalDecrypt(text, p, x):

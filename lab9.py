@@ -47,7 +47,7 @@ Sbox_inv = [
     0x55, 0x21, 0x0C, 0x7D
 ]
 
-
+Key = ""
 def subByte(st, sbx):
     sb = []
     for i in st:
@@ -325,6 +325,8 @@ def HexToText(h):
 
 
 def Encrypt(key, text):
+    global Key
+    Key = key
     crypt = ""
     for i in range(0, len(text) // 16 + 1):
         block = text[i * 16:i * 16 + 16]
@@ -336,6 +338,8 @@ def Encrypt(key, text):
 
 
 def Decrypt(key, text):
+    global Key
+    Key = key
     t = ""
     for i in range(0, len(text) // 32 + 1):
         block = text[i * 32:i * 32 + 32]

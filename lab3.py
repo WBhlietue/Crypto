@@ -83,3 +83,5 @@ def PrimitiveRoot(num):
 # print(PrimitiveRoot(27))
 # print(EulerTotientPrime(7, 2))
 # print(EulerTotientList(35))
+
+PrimitiveRoot(26)

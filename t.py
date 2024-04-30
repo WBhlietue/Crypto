@@ -1,10 +1,12 @@
-# F2 x 4C x ( 2 * E7 ) x ( 3 * 8C )
-# 87 x 6E x ( 2 * 46 ) x ( 3 * A6 )
-print(bin(0x87))
-print(bin(0x6e))
-print(bin(0x2))
-print(bin(0x46))
-print(bin(0x3))
-print(bin(0xa6))
-
-print(bin(67))
+n = 192649
+s= 101355 
+Xi = s*s % n 
+a = ""
+for i  in range(1, 14): 
+    Xi = (Xi)*(Xi) % n 
+    Bi = Xi % 2
+    print(Bi)
+    a += str(Bi)
+print(Xi)
+print(a)
+print(int(a, 2) * Xi)

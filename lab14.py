@@ -52,14 +52,14 @@ def H1(m, s):
     return d, h
     
 
-s = "test test tesing"
-M = "hello"
+# s = "test test tesing"
+# M = "hello"
 
-h1 = H1(M, s)
-h2 = H2(M)
+# h1 = H1(M, s)
+# h2 = H2(M)
 
-print("h1 AES decrypt:", h1[0])
-print("h1 hash       :", h1[1])
-print("h2 RSA decrypt:", h2[0])
-print("h2 hash       :", h2[1])
+# print("h1 AES decrypt:", h1[0])
+# print("h1 hash       :", h1[1])
+# print("h2 RSA decrypt:", h2[0])
+# print("h2 hash       :", h2[1])
 

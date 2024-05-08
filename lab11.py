@@ -29,8 +29,10 @@ letters += "0123456789 @[]?()#,:;.-'\"_=\n"
 
 def RSA(P, p, q, e, en):
     CC = []
+    p = 7
+    q = 11
     n = p * q 
-    e = 11
+    e = 13
     et = (p-1) * (q-1)
     d = pow(e, -1, et)
     for pp in P:
@@ -39,6 +41,7 @@ def RSA(P, p, q, e, en):
         CC.append(D1(pp, e, n))
     return CC
 
+print(RSA([20], 1, 1, 1, "de"))
 
 def RSAEnDe(txt, p, q, e, en):
     list = []

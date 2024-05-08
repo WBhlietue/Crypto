@@ -31,7 +31,7 @@ class Person:
 
 
 
-primeNum = 257
+primeNum = 3
 root = lab3.PrimitiveRoot(primeNum)
 a = root[int(lab10.RandomNumberCTR(), 16) % len(root)]
 bob = Person("Bob", primeNum, a)

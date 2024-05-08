@@ -8,6 +8,7 @@ import feistel
 def CBCEn(text, key):
     text = text.upper()
     binArray = feistel.binArray(text)
+    print(binArray)
     vec = "00000000"
     l = SDES.XORstr(vec, binArray[0])
     cbc = []
@@ -95,8 +96,11 @@ key = SDES.GenerateKey("0001000100")
 cbc = (CBCEn(text, key))
 print(CBCDe(cbc, key))
 
-ofb = OFBEn(text, key)
-print(OFBDe(ofb, key))
+# ofb = OFBEn(text, key)
+# print(OFBDe(ofb, key))
 
-counter = CounterEn(text, key)
-print(CounterDe(counter, key))
+# counter = CounterEn(text, key)
+# print(CounterDe(counter, key))
+
+
+# print(CBCEn("hi", "0111111101"))

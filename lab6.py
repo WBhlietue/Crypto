@@ -10,25 +10,19 @@ p4 = [1, 3, 2, 0]
 p1 = [3, 0, 2, 4, 6, 1, 7, 5]
 s0 = [['01', '00', '11', '10'], ['11', '10', '01', '00'],
       ['00', '10', '01', '11'], ['11', '01', '11', '10']]
-
 s1 = [['00', '01', '10', '11'], ['10', '00', '01', '11'],
       ['11', '00', '01', '00'], ['10', '01', '00', '11']]
-
 
 def ListShift(list):
     a = list[0]
     a = list[1:len(list)]
     a += list[0]
-    # list.remove(list[0])
-    # list.append(a)
     return a
-
 
 def XOR(a, b):
     if (a == b):
         return "0"
     return "1"
-
 
 def XORstr(str1, str2):
     res = ""
@@ -36,33 +30,27 @@ def XORstr(str1, str2):
         res += (XOR(str1[i], str2[i]))
     return res
 
-
 def ChangeIndex(list, index):
     str = ""
     for i in index:
         str += list[i]
     return str
 
-
 def GenerateKey(key):
-    
     pKey = ChangeIndex(key, p10)
     pKeyR = pKey[0:5]
     pKeyL = pKey[5:10]
     pKeyR = ListShift(pKeyR)
     pKeyL = ListShift(pKeyL)
     pKey = pKeyR + pKeyL
-    # pKey1 = [pKey[i] for i in p8]
     pKey1 = ChangeIndex(pKey, p8)
     pKeyR = ListShift(pKeyR)
     pKeyL = ListShift(pKeyL)
     pKeyR = ListShift(pKeyR)
     pKeyL = ListShift(pKeyL)
     pKey = pKeyR + pKeyL
-    # pKey2 = [pKey[i] for i in p8]
     pKey2 = ChangeIndex(pKey, p8)
     return (pKey1, pKey2)
-
 
 def BinToDec(b):
     if (b == "00"):
@@ -73,10 +61,8 @@ def BinToDec(b):
         return 2
     return 3
 
-
 def GetFromBox(c, l, s):
     return s[BinToDec(c)][BinToDec(l)]
-
 
 def Rou(pChar, key):
     pCharR = pChar[0:4]
@@ -96,7 +82,6 @@ def Rou(pChar, key):
     pCharXOR = XORstr(pCharR, pCharLEXMP)
     return pCharL, pCharXOR
 
-
 def EncryptChar(char, key):
     pChar = ChangeIndex(char, ip8)
     pChar = Rou(pChar, key[0])
@@ -108,8 +93,6 @@ def EncryptChar(char, key):
 def DecryptChar(char, key):
     key = [key[1], key[0]]
     return EncryptChar(char, key)
-
-
 
 def Encrypt(text, key):
     list = []

@@ -84,4 +84,5 @@ def PrimitiveRoot(num):
 # print(EulerTotientPrime(7, 2))
 # print(EulerTotientList(35))
 
-PrimitiveRoot(26)
+a = PrimitiveRoot(257)
+print(a)

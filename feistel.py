@@ -1,6 +1,6 @@
 def decimalToBinary(n,b):
     bnr=bin(n).replace("0b", "")
-    bnr=bnr.rjust(b, '0') #this reverses an array.
+    bnr=bnr.rjust(b, '0') 
     return bnr
 
 def binArray(text):

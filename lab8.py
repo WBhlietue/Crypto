@@ -41,14 +41,14 @@ def X9(key1, key2, iv):
     iv = EDE(xor2, key1, key2)
     return randm, iv
 
-key1 = "1010000010"
-key2 = "1000110010"
-iv = FZFilt(3, 8)
+# key1 = "1010000010"
+# key2 = "1000110010"
+# iv = FZFilt(3, 8)
 
-r64 = ''
-for i in range(8):
-    randm, iv =  X9(key1, key2, iv)
-    print(randm, int(randm, 2))
-    r64 += randm
-h = hex(int(r64, 2))[2:]
-print(h)
+# r64 = ''
+# for i in range(8):
+#     randm, iv =  X9(key1, key2, iv)
+#     print(randm, int(randm, 2))
+#     r64 += randm
+# h = hex(int(r64, 2))[2:]
+# print(h)
